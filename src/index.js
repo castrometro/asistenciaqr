@@ -3,11 +3,39 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Layoutmain from './components/layouts/Layout';
+import VerifiedUser from './components/VerifiedUser';
+import UnverifiedUser from './components/UnverifiedUser';
+import ErrorComponent from './components/ErrorComponent';
+import VerificationPage from './components/VerificationPage';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Layoutmain>
+    <HashRouter>
+        <Routes>
+          <Route
+            key={"verificar_rut"}
+            path={"/verificar/:rut"}
+            element={<VerificationPage/>}
+          />
+          {/* {routes.map((route, index) => (
+            <Route
+              key={toString(index)}
+              path={route.path}
+              element={
+                <route.layout>
+                  <route.element />
+                </route.layout>
+              }
+            />
+          ))} */}
+        </Routes>
+      </HashRouter>
+    </Layoutmain>
   </React.StrictMode>
 );
 
