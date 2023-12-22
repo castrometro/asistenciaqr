@@ -9,12 +9,6 @@ const VerifiedUser = () => {
         status="success"
         title="Entrada Validada"
         subTitle="¡Felicidades! Su entrada ha sido validada con éxito."
-        // extra={[
-        //   <Button type="primary" key="console">
-        //     Ver Detalles
-        //   </Button>,
-        //   <Button key="buy">Comprar Más Entradas</Button>,
-        // ]}
         icon={<CheckCircleOutlined className="text-6xl" />}
       />
     </div>

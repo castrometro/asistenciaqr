@@ -4,9 +4,7 @@ const { Header, Footer,Content } = Layout;
 const Layoutmain = ({ children }) => {
   return (
     <Layout>
-    <Header>Header</Header>
     <Content>{children}</Content>
-    <Footer>Footer</Footer>
     </Layout>
   );
 } 

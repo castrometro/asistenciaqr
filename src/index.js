@@ -9,7 +9,9 @@ import UnverifiedUser from './components/UnverifiedUser';
 import ErrorComponent from './components/ErrorComponent';
 import VerificationPage from './components/VerificationPage';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-
+import { toString } from 'lodash';
+import { BrowserRouter } from 'react-router-dom';
+// usar http://localhost:3000/#/verificar/12345678-9
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +24,16 @@ root.render(
             path={"/verificar/:rut"}
             element={<VerificationPage/>}
           />
+          <Route
+            key={"verificado"}
+            path={"/VerifiedUser"}
+            element={<VerifiedUser/>}
+          />
+          <Route
+            key={"no_verificado"}
+            path={"/UnverifiedUser"}
+            element={<UnverifiedUser/>}
+          />  
           {/* {routes.map((route, index) => (
             <Route
               key={toString(index)}

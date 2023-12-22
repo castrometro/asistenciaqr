@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 import { Spin, Button } from 'antd';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const VerificationPage = () => {
   const [loading, setLoading] = useState(false);
@@ -10,6 +10,8 @@ const VerificationPage = () => {
     useEffect(() => {
         verifyRUT(rut);
     }, [rut]);
+  const navigate = useNavigate();
+
   const verifyRUT = async (rut) => {
     setLoading(true);
     try {
@@ -23,17 +25,14 @@ const VerificationPage = () => {
       const rutRecord = data.find(record => record.Rut === rut);
       if (!rutRecord) {
         setMessage('RUT no encontrado en los registros.');
+        navigate("/UnverifiedUser");
       } else {
-        if (rutRecord['Asistencia (1/0)'] === 1) {
-          setMessage('El usuario ya ingresó y mostró su QR.');
-          //window.location.href = '../ErrorComponent';
-        } else {
           setMessage('Entrada verificada.');
-         // window.location.href = '../VerifiedUser';
+          navigate("/VerifiedUser");
         //   rutRecord['Asistencia (1/0)'] = 1;
-        //   XLSX.utils.sheet_add_json(sheet, [rutRecord], { skipHeader: true, origin: -1 });
-        //   XLSX.writeFile(workbook, 'asistencia_test.xlsx');
-        }
+         //  XLSX.utils.sheet_add_json(sheet, [rutRecord], { skipHeader: true, origin: -1 });
+        //  XLSX.writeFile(workbook, 'asistencia_test.xlsx');
+        
       }
     } catch (error) {
       console.error('Error al verificar el RUT:', error);
